@@ -11,8 +11,9 @@ export async function getFromNFC(req, res) {
    const result = await connection.query(
       `SELECT * FROM nfcwatch;`
     );
+    const response = result.rows
 
-    return res.status(201).send (result);
+    return res.status(201).send (response);
   } 
   catch (error) {
     return res.status(500).send(error);
