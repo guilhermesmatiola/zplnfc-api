@@ -1,6 +1,11 @@
 import connection from "../dbStrategy/postgres.js";
 import dayjs from "dayjs";
 
+export async function teste(req,res){
+  res.send("hello")
+}
+
+
 export async function postFromNFC(req, res) {
 
   const { teste, userId } = req.body;
