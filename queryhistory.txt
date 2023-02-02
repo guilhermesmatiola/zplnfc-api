@@ -8,18 +8,17 @@ CREATE TABLE users(
 "createdAt" timestamp DEFAULT NOW()
 );
 
-CREATE TABLE sessions(
+CREATE TABLE nfcwatch(
 id SERIAL PRIMARY KEY,
-token TEXT NOT NULL UNIQUE,
+teste TEXT NOT NULL UNIQUE,
 "createdAt" timestamp DEFAULT NOW(),
 "userId" INTEGER NOT NULL REFERENCES users(id)
 );
 
-CREATE TABLE links(
+CREATE TABLE zpls(
 "id" SERIAL PRIMARY KEY NOT NULL,
-"shortUrl" TEXT NOT NULL,
-"url" TEXT NOT NULL,
-"viewCount" INTEGER NOT NULL,
+script TEXT NOT NULL,
+zplname TEXT NOT NULL,
 "createdAt" timestamp NOT NULL DEFAULT NOW(),
 "userId" INTEGER REFERENCES users(id)
 );
