@@ -9,7 +9,7 @@ export async function getFromNFC(req, res) {
 
   try {
    const result = await connection.query(
-      `INSERT INTO nfcwatch ("userId", "teste") VALUES ($1, $2);`, [ userId, teste]
+      `SELECT * FROM nfcwatch;`
     );
 
     return res.status(201).send (result);
