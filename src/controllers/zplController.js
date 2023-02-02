@@ -4,10 +4,10 @@ import dayjs from "dayjs";
 export async function postFromNFC(req, res) {
 
   const { teste, userId } = req.body;
-
+  console.log(teste, userId)
   try {
     await connection.query(
-      `INSERT INTO nfcwatch ("userId", "teste") VALUES ($1, $2);`, [teste, userId]
+      `INSERT INTO nfcwatch ("userId", "teste") VALUES ($1, $2);`, [ userId, teste]
     );
 
     return res.status(201).send ('Ok');
