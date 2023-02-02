@@ -5,6 +5,20 @@ export async function teste(req,res){
   res.send("hello")
 }
 
+export async function getFromNFC(req, res) {
+
+  try {
+   const result = await connection.query(
+      `INSERT INTO nfcwatch ("userId", "teste") VALUES ($1, $2);`, [ userId, teste]
+    );
+
+    return res.status(201).send (result);
+  } 
+  catch (error) {
+    return res.status(500).send(error);
+  }
+}
+
 
 export async function postFromNFC(req, res) {
 
