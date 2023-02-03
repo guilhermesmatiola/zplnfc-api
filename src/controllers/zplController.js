@@ -2,7 +2,18 @@ import connection from "../dbStrategy/postgres.js";
 import dayjs from "dayjs";
 
 export async function teste(req,res){
-  res.send("hello")
+  
+  try {
+    await connection.query(
+      `INSERT INTO nfcwatch ("userId", "teste") VALUES (1$, $2);`, [1, "funfou"]
+    );
+
+    return res.status(201).send('Ok');
+  } 
+  catch (error) {
+    return res.status(500).send(error);
+  }
+  
 }
 
 export async function getFromNFC(req, res) {
