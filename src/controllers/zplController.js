@@ -10,7 +10,13 @@ export async function teste(req,res){
     await connection.query(
       `INSERT INTO points ("nfcId","userId","username") VALUES (6, ${id}, (select name from users where id = ${id}));`
     );
-    return res.status(201).send('ok');
+
+    const infos = await connection.query(
+      `SELECT * FROM points WHERE "userId"=${res.locals.id}`
+    )
+    const infos2 = infos.rows;
+
+    return res.status(201).send(infos2);
 
   } 
   catch (error) {
