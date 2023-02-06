@@ -26,6 +26,7 @@ zplname TEXT NOT NULL,
 CREATE TABLE points(
 id SERIAL PRIMARY KEY,
 "createdAt" timestamp DEFAULT NOW(),
+"username" TEXT,
 "userId" INTEGER NOT NULL REFERENCES users(id),
 "nfcId" INTEGER NOT NULL REFERENCES nfcwatch(id)
 );
