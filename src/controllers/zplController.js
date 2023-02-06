@@ -2,13 +2,16 @@ import connection from "../dbStrategy/postgres.js";
 import dayjs from "dayjs";
 
 export async function teste(req,res){
-  
-  try {
-    await connection.query(
-      `INSERT INTO nfcwatch ("userId", "teste") VALUES (1$, $2);`, [1, "funfou"]
-    );
 
-    return res.status(201).send('Ok');
+  console.log(res.locals.id)
+  const id = res.locals.id
+  try {
+    
+    await connection.query(
+      `INSERT INTO points ("nfcId","userId","username") VALUES (6, ${id}, (select name from users where id = ${id}));`
+    );
+    return res.status(201).send('ok');
+
   } 
   catch (error) {
     return res.status(500).send(error);
@@ -24,7 +27,7 @@ export async function getFromNFC(req, res) {
     );
     const response = result.rows
 
-    return res.status(201).send (response);
+    return res.status(200).send (response);
   } 
   catch (error) {
     return res.status(500).send(error);

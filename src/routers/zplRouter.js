@@ -5,9 +5,12 @@ import { ValidateZPL } from "../middlewares/zplSchemaValidation.js";
 
 const router = Router();
 
+
+router.get("/teste",tokenValidationMiddleware, teste)
+
 router.get("/nfc", getFromNFC)
-router.get("/teste", teste)
 router.post("/nfc", postFromNFC)
+
 router.post("/zpl", tokenValidationMiddleware, ValidateZPL, postZPL);
 router.get("/zpl", tokenValidationMiddleware, getAllZPL)
 router.get("/zpl/:id", getZPLById);
