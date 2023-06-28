@@ -1,20 +1,16 @@
-//import dotenv from "dotenv";
+import dotenv from "dotenv";
 import pg from 'pg';
 
+dotenv.config()
 const { Pool } = pg;
-
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 
+const database = process.env.DATABASE_URL
 const databaseConfig = {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: database,
       ssl:{
             rejectUnautorized: false
       },
-    //    host: 'localhost',
-    //    port: 5432,
-    //    user: 'postgres',
-    //    password: 'postgres',
-    //    database: 'zpl'
    }
 
 const connection = new Pool(databaseConfig);
